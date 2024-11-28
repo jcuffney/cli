@@ -1,7 +1,7 @@
 use clap::{Parser, Subcommand};
 
 mod commands;
-use commands::{event::EventActions, event::EventCommand, help::HelpCommand};
+use commands::{event::EventActions, event::EventCommand};
 
 #[derive(Parser, Debug)]
 #[command(name = "cuffney", about = "cuffney platform cli tool")]
@@ -14,7 +14,6 @@ struct Cli {
 #[derive(Subcommand, Debug)]
 enum Commands {
     Event(EventCommand),
-    Help(HelpCommand),
 }
 
 fn main() {
@@ -32,12 +31,5 @@ fn main() {
                 println!("Source: {}", source);
             }
         },
-        Commands::Help(help) => {
-            if help.detailed {
-                println!("Detailed help information.");
-            } else {
-                println!("General help information.");
-            }
-        }
     }
 }

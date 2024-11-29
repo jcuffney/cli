@@ -76,7 +76,7 @@ jobs:
       uses: actions/download-artifact@v4
       with:
         name: build
-        path: /target/release
+        path: target/release
         
     - name: List Files
       run: |

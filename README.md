@@ -7,6 +7,7 @@
 ## Usage
 
 `cargo run -- -h`
+`cargo run -- event publish --source cuffney.main.event --detail "{}"`
 
 ## About
 

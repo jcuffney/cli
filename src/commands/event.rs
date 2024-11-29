@@ -26,3 +26,14 @@ pub struct EventCommand {
     #[command(subcommand)]
     pub action: EventActions,
 }
+
+pub fn publish(source: &str, detail: &str) {
+    println!("Publishing event:");
+    println!("Source: {}", source);
+    println!("Detail: {}", detail);
+}
+
+pub fn subscribe(source: &str) {
+    println!("Subscribing to event:");
+    println!("Source: {}", source);
+}

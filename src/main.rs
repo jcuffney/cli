@@ -22,13 +22,10 @@ fn main() {
     match args.subcommand {
         Commands::Event(event) => match event.action {
             EventActions::Publish { source, detail } => {
-                println!("Publishing event:");
-                println!("Source: {}", source);
-                println!("Detail: {}", detail);
+                commands::event::publish(&source, &detail);
             }
             EventActions::Subscribe { source } => {
-                println!("Subscribing to event:");
-                println!("Source: {}", source);
+                commands::event::subscribe(&source);
             }
         },
     }

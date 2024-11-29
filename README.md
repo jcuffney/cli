@@ -8,6 +8,7 @@
 
 `cargo run -- -h`
 `cargo run -- event publish --source cuffney.main.event --detail "{}"`
+`cargo run -- event subscribe --source cuffney.main.event`
 
 ## About
 

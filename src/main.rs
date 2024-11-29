@@ -29,7 +29,7 @@ async fn main() {
                 commands::event::publish(cw_client, &source, &detail).await;
             }
             EventActions::Subscribe { source } => {
-                commands::event::subscribe(&source);
+                commands::event::subscribe(cw_client, &source).await;
             }
         },
     }

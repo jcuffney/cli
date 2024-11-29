@@ -84,9 +84,6 @@ jobs:
         ls -la target/release
         echo "${{ github.ref }}"
         echo "${{ secrets.GH_TOKEN }}"
-    
-    - name: Publish to Crates.io
-      run: cargo publish --token ${{ secrets.CARGO_REGISTRY_TOKEN }}
 
     # - name: Create GitHub Release
     #   id: create_release

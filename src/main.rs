@@ -16,13 +16,17 @@ enum Commands {
     Event(EventCommand),
 }
 
-fn main() {
+#[tokio::main]
+async fn main() {
     let args = Cli::parse();
+
+    let config = aws_config::load_from_env().await;
+    let cw_client = aws_sdk_cloudwatchevents::Client::new(&config);
 
     match args.subcommand {
         Commands::Event(event) => match event.action {
             EventActions::Publish { source, detail } => {
-                commands::event::publish(&source, &detail);
+                commands::event::publish(cw_client, &source, &detail).await;
             }
             EventActions::Subscribe { source } => {
                 commands::event::subscribe(&source);

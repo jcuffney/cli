@@ -1,3 +1,4 @@
+use aws_sdk_cloudwatchevents::types::PutEventsRequestEntry;
 use clap::{Args, Subcommand};
 
 #[derive(Subcommand, Debug)]
@@ -27,10 +28,25 @@ pub struct EventCommand {
     pub action: EventActions,
 }
 
-pub fn publish(source: &str, detail: &str) {
+pub async fn publish(client: aws_sdk_cloudwatchevents::Client, source: &str, detail: &str) {
     println!("Publishing event:");
     println!("Source: {}", source);
     println!("Detail: {}", detail);
+
+    let output = client
+        .put_events()
+        .entries(
+            PutEventsRequestEntry::builder()
+                .source(source)
+                .detail(detail)
+                .detail_type("UserEvent")
+                .build(),
+        )
+        .send()
+        .await
+        .expect("Failed to publish event");
+
+    println!("Output: {:?}", output);
 }
 
 pub fn subscribe(source: &str) {

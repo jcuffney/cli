@@ -2,7 +2,7 @@
 
 > CLI tool for interacting with the cuffney platform
 
-![primary](https://github.com/jcuffney/cli/actions/workflows/primary.yml/badge.svg)
+![https://github.com/jcuffney/cli/actions/workflows/primary.yml](https://github.com/jcuffney/cli/actions/workflows/primary.yml/badge.svg)
 
 ## Usage
 
